@@ -169,8 +169,8 @@ section{
  border-radius: 10px;
   padding: 1.2rem;
   width: 300px;
-  transition: transform 0.3s ease-in , border 0.2s ease-in-out;;
-box-shadow: 0 0 14px rgba(149, 157, 165, 0.2);
+  box-shadow: 0 0 14px 5px rgba(149, 157, 165, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .skill-category ul {
   list-style: none;
@@ -178,7 +178,7 @@ box-shadow: 0 0 14px rgba(149, 157, 165, 0.2);
 
 }
 .skill-category:hover{
-    transform: scale(1.03);
+  transform: scale(1.03);
   box-shadow: 0 0 20px 6px rgba(149, 157, 165, 0.3);
 }
 .skill-category ul li {
