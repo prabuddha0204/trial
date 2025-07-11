@@ -42,8 +42,9 @@ body {
   white-space: nowrap;
   width: 0;
   animation: typing 2s steps(30, end) 0.3s forwards, blink 1s step-end infinite;
-  font-size: 3rem;
+  font-size: 4.5rem;
   font-weight: 800;
+  padding-left: 15px;
   color: #ffffff;
 }
 
@@ -52,7 +53,7 @@ body {
     width: 0;
   }
   to {
-    width: 13.7ch;
+    width: 14ch;
   }
 }
 
@@ -75,7 +76,7 @@ body {
 }
 .navbar {
   position: fixed;
-  top: 20px;
+  top: 35px;
   left: 50%;
   transform: translateX(-50%);
   height: 8%;
@@ -96,7 +97,7 @@ body {
   color: rgb(255, 255, 255);
   text-decoration: none;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.5rem;
   transition: all 0.3s;
 }
 
@@ -110,61 +111,97 @@ section{
    min-height: 100vh;
 }
 .mini{
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   font-weight: 200;
-  padding-top: 120px;
-  padding-left: 30px;
-  padding-right: 250px;
+  padding-top: 180px;
+  padding-left: 50px;
+  padding-right: 400px;
   line-height: 1.4;
 }
 #skills {
-  font-size: 1rem;
   font-weight: 200;
-  padding-top: 90px;
+  padding-top: 150px;
   text-align: center;
+  font-size: 1.2rem;
+  
 }
 
 .skills-container {
   display: flex;
-  justify-content: center;
+  justify-content:space-evenly;
   flex-wrap: wrap;
+ padding-top: 3rem;
   gap: 40px;
+  
+}
+.format{
+  font-size: 2rem;
+  padding-bottom: 1rem;
+  font-weight: 400;
+}
+.project-card {
+  background: transparent;
+  color: white;
+  width: 300px;
+  padding: 2rem;
+  box-shadow: 0 0 14px 5px rgba(149, 157, 165, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px; /* Adjust height to fit your content */
 }
 
+.project-card a {
+  margin-top: auto;
+  color: #00aaff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#contact {
+  margin-top: 6rem;
+}
 .skill-category {
-  padding: 1rem;
-  width: 250px;
-  transition: transform 0.3s ease-in , border 0.3s ease-in-out;;
-    border: 1px solid white;
+ 
+  padding: 1.2rem;
+  width: 300px;
+  transition: transform 0.3s ease-in , border 0.2s ease-in-out;;
+box-shadow: 0 0 14px rgba(149, 157, 165, 0.2);
 }
-
-.skill-category:hover {
-  border: 3px solid white;
-}
-
 .skill-category ul {
   list-style: none;
   padding: 0;
-}
 
+}
+.skill-category:hover{
+    transform: scale(1.03);
+  box-shadow: 0 0 20px 6px rgba(149, 157, 165, 0.3);
+}
 .skill-category ul li {
   margin: 0.5rem 0;
-  font-size: 1.1rem;
+  font-size: 1.6rem;
 }
 #contact {
   background: transparent;
   min-height: auto;
-  padding: 80px 20px;
   color: white;
   text-align: center;
   font-weight: 200;
+  padding-bottom: 7rem;
+  font-size: 1.7rem;
 }
 
 .contact-text {
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
   color: #ccc;
   font-weight: 200;
+  margin-bottom: 3rem;
 }
 #contact a {
   color: #00aaff;
@@ -177,11 +214,13 @@ section{
 }
 .contact-details p {
   margin-bottom: 1rem;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
 }
 .section-title {
-  padding-right: 30px;
-  padding-left: 30px;
-  font-size: 1.5rem; /* changed from 2.5rem */
+  padding-right: 60px;
+  padding-left: 60px;
+  font-size: 2.4rem; /* changed from 2.5rem */
   margin-bottom: 2rem;
   font-weight: 200;
   color: #ccc;
@@ -195,4 +234,87 @@ section{
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+a i {
+
+  font-size: 2rem;
+  margin: 0 1rem;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.linkedin-icon i {
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.linkedin-icon i:hover {
+  color: #005582;
+}
+a{
+  text-decoration: none !important;
+}
+.github-icon i {
+  color: #ffffff; /* GitHub white, or use #333 for dark theme */
+  transition: color 0.3s ease;
+}
+
+.github-icon i:hover {
+  color: #6e5494; /* GitHub purple on hover */
+}
+.projects-container {
+  display: flex;
+  justify-content:space-around;
+  flex-wrap:wrap;
+  gap: 2rem;
+  
+}
+
+.project-card {
+  background:transparent;
+  color: white;
+  width: 300px;
+  margin-top: 0rem;
+  padding: 2rem;
+  box-shadow: 0 0 14px 5px rgba(149, 157, 165, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.project-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px 6px rgba(149, 157, 165, 0.3);
+}
+
+.project-card h3 {
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  font-weight: 200;
+}
+
+.project-card p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  font-weight: 200;
+
+}
+
+.project-card a {
+  color: #00aaff;
+  text-decoration: none;
+  font-weight: 200;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+  color: #3399ff;
+}
+#projects {
+  min-height: 100vh;
+  padding-top: 6rem;
+}
+.contact-text{
+  text-align: center;
+  font-size: 4rem;
 }
