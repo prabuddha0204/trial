@@ -15,11 +15,30 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Hamburger Button -->
+<div class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#home" onclick="closeMenu()">HOME</a></li>
+    <li><a href="#about" onclick="closeMenu()">ABOUT</a></li>
+    <li><a href="#skills" onclick="closeMenu()">SKILLS</a></li>
+    <li><a href="#projects" onclick="closeMenu()">PROJECTS</a></li>
+    <li><a href="#contact" onclick="closeMenu()">CONTACT</a></li>
+  </ul>
+</nav>
+
      <section id="home">
     <canvas id="starfield"></canvas>
 
     <div class="center">
-      <h1 class="typewriter">Hello, I'm Prabuddha.</h1>
+      <h1 class="typewriter"> <span class="line1">Hello</span>
+  <span class="line2">I'm Prabuddha</span></h1>
     </div>
    
     <nav class="navbar">
@@ -119,7 +138,7 @@
     <div class="project-card">
       <h3> Portfolio Website</h3>
       <p>A modern, animated portfolio showcasing my skills, projects, and contact info.</p>
-      <a href="https://your-price-tracker-link" target="_blank">View Project</a>
+      <a href="https://website-lyart-theta-35.vercel.app/#contact" target="_blank">View Project</a>
     </div>
   </div>
   </div>
