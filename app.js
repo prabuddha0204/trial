@@ -9,6 +9,7 @@ window.onload = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
+
   resizeCanvas();
   window.addEventListener("resize", resizeCanvas);
 
@@ -45,109 +46,76 @@ window.onload = () => {
   createStars();
   animateStars();
 };
+
+// ✨ Trigger typewriter animation
 function triggerTypewriter() {
   const heading = document.querySelector('.typewriter');
+  if (!heading) return;
 
-  // Reset the animation
   heading.style.animation = 'none';
   heading.offsetHeight; // Force reflow
   heading.style.animation = 'typing 2s steps(25, end) forwards, blink 0.7s step-end infinite';
 }
 
-// Trigger when page loads
-window.addEventListener('DOMContentLoaded', triggerTypewriter);
-
-// Trigger on HOME click
-document.querySelector('a[href="#home"]').addEventListener('click', (e) => {
-  e.preventDefault();
-  document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+// 🔁 Run once on page load
+window.addEventListener('DOMContentLoaded', () => {
   triggerTypewriter();
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const aboutText = document.getElementById("aboutText");
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          aboutText.classList.add("visible");
-        } else {
-          aboutText.classList.remove("visible");
-        }
-      });
-    },
-    {
-      threshold: 0.3, // when 30% of #aboutText is visible
+  // Handle all #home buttons (desktop + mobile)
+document.querySelectorAll('a[href="#home"]').forEach(homeLink => {
+  homeLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+
+    // Trigger typewriter only on desktop (screen width > 768px)
+    if (window.innerWidth > 768) {
+      triggerTypewriter();
     }
-  );
 
-  observer.observe(aboutText);
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const fadeElements = [document.getElementById("aboutText"), document.getElementById("skillsContent")];
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        } else {
-          entry.target.classList.remove("visible");
-        }
-      });
-    },
-    {
-      threshold: 0.3,
-    }
-  );
-
-  fadeElements.forEach((el) => {
-    if (el) observer.observe(el);
+    // Always close mobile menu
+    closeMenu();
   });
 });
-document.addEventListener("DOMContentLoaded", () => {
+
+
+  // Fade-in observer
   const fadeElements = [
     document.getElementById("aboutText"),
     document.getElementById("skillsContent"),
     document.getElementById("contactContent")
   ];
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        } else {
-          entry.target.classList.remove("visible");
-        }
-      });
-    },
-    {
-      threshold: 0.3,
-    }
-  );
-
-  fadeElements.forEach((el) => {
-    if (el) observer.observe(el);
-  });
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
-        observer.unobserve(entry.target); // Optional: only animate once
+      } else {
+        entry.target.classList.remove("visible");
       }
     });
   }, {
-    threshold: 0.1
+    threshold: 0.3,
   });
+
+  fadeElements.forEach(el => {
+    if (el) fadeObserver.observe(el);
+  });
+
+  // One-time fade-in animation
+  const oneTimeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        oneTimeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
 
   document.querySelectorAll(".fade-in").forEach(el => {
-    observer.observe(el);
+    oneTimeObserver.observe(el);
   });
-});
 
+  // Hamburger menu toggle
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobileMenu");
 
@@ -155,9 +123,15 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.classList.toggle("active");
     mobileMenu.classList.toggle("active");
   });
+});
 
-  function closeMenu() {
+// 📱 Close mobile menu helper
+function closeMenu() {
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  if (hamburger && mobileMenu) {
     hamburger.classList.remove("active");
     mobileMenu.classList.remove("active");
   }
-
+}
