@@ -135,9 +135,9 @@ section{
   
 }
 .format{
-  font-size: 2rem;
+  font-size: 1.8rem;
   padding-bottom: 1rem;
-  font-weight: 100;
+  font-weight: 50;
 }
 .project-card {
   background: transparent;
